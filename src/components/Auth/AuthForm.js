@@ -13,6 +13,29 @@ const AuthForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
+    //optional add validation
+
+    if (isLogin) {
+    } else {
+      fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA8McoRQY1J6x0Xkj-wD98GheuYnCpOCnM",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
   };
 
   return (
