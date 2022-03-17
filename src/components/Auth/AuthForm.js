@@ -6,6 +6,7 @@ const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoadin, setIsLoading] = useState(false);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -18,6 +19,8 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     //optional add validation
+
+    setIsLoading(true);
 
     if (isLogin) {
     } else {
@@ -35,6 +38,7 @@ const AuthForm = () => {
           },
         }
       ).then((res) => {
+        setIsLoading(false);
         if (res.ok) {
           //store entered form data
         } else {
