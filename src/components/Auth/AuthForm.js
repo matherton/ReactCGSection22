@@ -38,7 +38,7 @@ const AuthForm = () => {
         if (res.ok) {
           //store entered form data
         } else {
-          res.json().then((data) => {
+          return res.json().then((data) => {
             //show an error modal?
             console.log(data);
           });
